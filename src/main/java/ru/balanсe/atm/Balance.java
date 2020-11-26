@@ -1,22 +1,16 @@
 package ru.balanсe.atm;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Setter
+@Getter
+@AllArgsConstructor
 public class Balance {
     private BigDecimal sum;
     private Currency1 currency;
-
-    public Balance(BigDecimal sum, Currency1 currency) {
-        this.sum = sum;
-        this.currency = currency;
-    }
-
-    public BigDecimal getSum() {
-        return sum;
-    }
-
-    public Currency1 getCurrency() {
-        return currency;
-    }
 
 }
