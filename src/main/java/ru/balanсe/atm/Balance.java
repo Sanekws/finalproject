@@ -11,6 +11,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Balance {
     private BigDecimal sum;
-    private Currency1 currency;
-
+    private Currency currency;
 }
+
+
+
+
+

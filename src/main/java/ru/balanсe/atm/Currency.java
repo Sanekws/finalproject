@@ -1,6 +1,6 @@
 package ru.balanсe.atm;
 
-public enum Currency1 {
+public enum Currency {
     RUB,
     EUR,
     USD

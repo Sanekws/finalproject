@@ -1,17 +1,38 @@
 package ru.balanсe.atm;
 
+import lombok.Getter;
 import lombok.Setter;
-import ru.balanсe.client.Client;
+
 
 @Setter
-public class Atm {
-    private Client client1;
-    private Balance balance1;
+@Getter
+public class Atm implements Application {
+    private int idAtm;
 
-    public void balance() {
-        System.out.println("баланс по карте " + client1.getNumberCard() + " - " + balance1.getSum() + "," + balance1.getCurrency());
+
+    @Override
+    public String getBalance(String numberCard, String expireDate, int pinCode) {
+        verificationPinCode(pinCode);
+        return "баланас по карте " + numberCard;
+    }
+
+    public String balance(Balance balance) {
+        return balance.getSum() + " " + balance.getCurrency();
+
+    }
+
+    private void verificationPinCode(int pinCode) {
+        String c = String.valueOf(pinCode);
+        for (int i = 0; i < 3; i++) {
+            if (c.length() == 4) {
+                return;
+            } else System.out.println("Введите пин-код повторно");
+        }
+        System.out.println("Ваша карта заблокирована");
+        System.exit(4);
     }
 
 
 }
+
 
