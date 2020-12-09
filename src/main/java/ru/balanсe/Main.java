@@ -15,6 +15,7 @@ public class Main {
         Balance balance = new Balance(new BigDecimal(3333), Currency.RUB);
         System.out.println(client.getBalance(atm) + " равен " + atm.balance(balance));
 
+
     }
 
 }

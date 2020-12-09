@@ -14,7 +14,6 @@ public class Client {
     private String expireDate;
     private int pinCode;
 
-
     public String getBalance(Application atm) {
         return atm.getBalance(numberCard, expireDate, pinCode);
     }

@@ -7,18 +7,25 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Atm implements Application {
-    private int idAtm;
 
 
     @Override
     public String getBalance(String numberCard, String expireDate, int pinCode) {
+        verificationNumberCard(numberCard);
         verificationPinCode(pinCode);
+
         return "баланас по карте " + numberCard;
     }
 
     public String balance(Balance balance) {
         return balance.getSum() + " " + balance.getCurrency();
 
+    }
+
+    private void verificationNumberCard(String numberCard) {
+        if (numberCard == null) {
+            throw new NullPointerException("Карта не читается!");
+        }
     }
 
     private void verificationPinCode(int pinCode) {
