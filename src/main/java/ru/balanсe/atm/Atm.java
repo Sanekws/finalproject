@@ -3,10 +3,13 @@ package ru.balanсe.atm;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+
 
 @Setter
 @Getter
 public class Atm implements Application {
+    public HashSet<String> doubleChek = new HashSet<>();
 
 
     @Override
@@ -26,6 +29,11 @@ public class Atm implements Application {
         if (numberCard == null) {
             throw new NullPointerException("Карта не читается!");
         }
+        if (!doubleChek.add(numberCard)) {
+            System.out.println("Операция по запросу баланса была выполнена ранее");
+            System.exit(7);
+        }
+
     }
 
     private void verificationPinCode(int pinCode) {
@@ -41,5 +49,8 @@ public class Atm implements Application {
 
 
 }
+
+
+
 
 
