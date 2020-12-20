@@ -6,17 +6,15 @@ import ru.balanсe.atm.Currency;
 import ru.balanсe.client.Client;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 
 public class Main {
     public static void main(String[] args) {
-        Client client = new Client("123456", "12/12", 4544);
-        Client client1 = new Client("123456", "12/12", 4544);
+        Client client = new Client("123456", LocalDate.of(2021, 11, 15), 4544);
         Atm atm = new Atm();
         Balance balance = new Balance(new BigDecimal(3333), Currency.RUB);
         System.out.println(client.getBalance(atm) + " равен " + atm.balance(balance));
-        client1.getBalance(atm);
-
 
     }
 

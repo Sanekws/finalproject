@@ -2,10 +2,13 @@ package ru.balanсe.atm;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 
 
+@Slf4j
 @Setter
 @Getter
 public class Atm implements Application {
@@ -13,9 +16,10 @@ public class Atm implements Application {
 
 
     @Override
-    public String getBalance(String numberCard, String expireDate, int pinCode) {
+    public String getBalance(String numberCard, LocalDate expDate, int pinCode) {
         verificationNumberCard(numberCard);
         verificationPinCode(pinCode);
+        verificationExpDate(expDate);
 
         return "баланас по карте " + numberCard;
     }
@@ -30,7 +34,7 @@ public class Atm implements Application {
             throw new NullPointerException("Карта не читается!");
         }
         if (!doubleChek.add(numberCard)) {
-            System.out.println("Операция по запросу баланса была выполнена ранее");
+            log.info("Операция по запросу баланса была выполнена ранее");
             System.exit(7);
         }
 
@@ -41,13 +45,20 @@ public class Atm implements Application {
         for (int i = 0; i < 3; i++) {
             if (c.length() == 4) {
                 return;
-            } else System.out.println("Введите пин-код повторно");
+            } else log.info("Введите пин-код повторно");
         }
-        System.out.println("Ваша карта заблокирована");
+        log.info("Ваша карта заблокирована");
         System.exit(4);
     }
 
-
+    private void verificationExpDate(LocalDate expDate) {
+        LocalDate date = LocalDate.now();
+        if (date.isBefore(expDate)) ;
+        else {
+            log.info("Срок действия карты закончился");
+            System.exit(4);
+        }
+    }
 }
 
 
