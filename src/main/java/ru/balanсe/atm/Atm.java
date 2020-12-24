@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.HashSet;
 
@@ -16,7 +19,7 @@ public class Atm implements Application {
 
 
     @Override
-    public String getBalance(String numberCard, LocalDate expDate, int pinCode) {
+    public String getBalance(@NotNull String numberCard, LocalDate expDate, @Min(0000) @Max(9999) int pinCode) {
         verificationNumberCard(numberCard);
         verificationPinCode(pinCode);
         verificationExpDate(expDate);
@@ -41,6 +44,7 @@ public class Atm implements Application {
     }
 
     private void verificationPinCode(int pinCode) {
+
         String c = String.valueOf(pinCode);
         for (int i = 0; i < 3; i++) {
             if (c.length() == 4) {
