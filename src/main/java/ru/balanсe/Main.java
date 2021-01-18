@@ -14,7 +14,7 @@ public class Main {
         Client client = new Client("1213456", LocalDate.of(2021, 11, 15), 5114);
         Atm atm = new Atm();
         Balance balance = new Balance(new BigDecimal(3333), Currency.RUB);
-        System.out.println(client.getBalance(atm) + " равен " + atm.balance(balance));
+        System.out.println(client.getBalance(atm) + " равен " + atm.getBalance(balance));
 
     }
 

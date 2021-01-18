@@ -27,8 +27,8 @@ public class Atm implements Application {
         return "баланас по карте " + numberCard;
     }
 
-    public String balance(Balance balance) {
-        return balance.getSum() + " " + balance.getCurrency();
+    public String getBalance(Balance balance) {
+        return balance.getAmount() + " " + balance.getCurrency();
 
     }
 
