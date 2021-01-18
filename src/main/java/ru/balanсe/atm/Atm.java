@@ -3,6 +3,7 @@ package ru.balanсe.atm;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 @Slf4j
 @Setter
 @Getter
+@Component
 public class Atm implements Application {
     public HashSet<String> doubleChek = new HashSet<>();
 
@@ -27,7 +29,7 @@ public class Atm implements Application {
         return "баланас по карте " + numberCard;
     }
 
-    public String getBalance(Balance balance) {
+    public String Balance(Balance balance) {
         return balance.getAmount() + " " + balance.getCurrency();
 
     }
