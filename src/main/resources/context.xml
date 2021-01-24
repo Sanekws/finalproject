@@ -13,4 +13,5 @@
     <bean id="atm" class="ru.balanсe.atm.Atm">
     </bean>
 
+
 </beans>
