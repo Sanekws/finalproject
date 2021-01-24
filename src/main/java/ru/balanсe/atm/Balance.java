@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @AllArgsConstructor
+
+
 public class Balance {
     private BigDecimal amount;
     private Currency currency;

@@ -2,8 +2,8 @@ package ru.balanсe.atm;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -15,9 +15,10 @@ import java.util.HashSet;
 @Slf4j
 @Setter
 @Getter
-@Component
+@ToString
 public class Atm implements Application {
-    public HashSet<String> doubleChek = new HashSet<>();
+    private Balance balance;
+    private HashSet<String> doubleChek = new HashSet<>();
 
 
     @Override
@@ -26,13 +27,9 @@ public class Atm implements Application {
         verificationPinCode(pinCode);
         verificationExpDate(expDate);
 
-        return "баланас по карте " + numberCard;
+        return "баланас по карте " + numberCard + " " + balance;
     }
 
-    public String Balance(Balance balance) {
-        return balance.getAmount() + " " + balance.getCurrency();
-
-    }
 
     private void verificationNumberCard(String numberCard) {
         if (numberCard == null) {
